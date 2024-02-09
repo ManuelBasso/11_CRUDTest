@@ -42,13 +42,8 @@ public class StudentController {
     }
 
     @PutMapping("/{id}")
-    public Student updateId(@PathVariable Long id, @RequestBody Student student) {
-        if (studentRepository.existsById(id)) {
-            student.setId(id);
-            return studentRepository.save(student);
-        } else {
-            return null;
-        }
+    public Student updateId(@PathVariable Long id, @RequestParam String firstName) {
+        return studentService.setNewName(id, firstName);
 
     }
 

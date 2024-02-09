@@ -27,4 +27,13 @@ public class StudentService {
         }
     }
 
+    public Student setNewName(Long id, String firstName) {
+        Optional<Student> student = studentRepository.findById(id);
+        if (student.isPresent()) {
+            student.get().setFirstName(firstName);
+            return studentRepository.save(student.get());
+        } else {
+            return null;
+        }
+    }
 }
