@@ -132,7 +132,7 @@ class StrudentControllerTest {
 
         String studentJSON = objectMapper.writeValueAsString(s);
 
-        MvcResult result = this.mockMvc.perform(put("/student/" + s.getId())
+        MvcResult result = this.mockMvc.perform(put("/student/" + s.getId() + "?firstName=modificato")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(studentJSON)).andDo(print())
                 .andExpect(status().isOk()).andReturn();
